@@ -17,12 +17,14 @@ function Login() {
                 
                 <div className='grid-item-login'>
                     <div className="contenedor-img-login" id='img-negocio'></div>                    
-                    <h2 className='titulo-login'>Soy dueño de cancha</h2>
+                    <h2 className='titulo-login'>Quiero gestionar mi club</h2>
                     <div className="formulario-negocio">
                         <input type='text' placeholder='   Usuario' className='input-usuario'/>
                         <input type='password' placeholder='   Contraseña' className='input-contraseña' />
                         <button className='btn-iniciar-sesion'>Iniciar Sesión</button>
                     </div>
+                    <p className='recuperar-password-negocio' onClick={handleRecuperarPassword}>¿Has olvidado tu contraseña?</p>
+                    <p className='registro-negocio' onClick={handleRegistroClub}>¿Eres nuevo? Resgistrate aquí</p>
                 </div>
                 
             </div>

@@ -98,3 +98,23 @@
     background-size: cover;
     background-position: center;
 }
+
+.recuperar-password-negocio, .registro-negocio {
+    color: gray;
+    margin: 0;
+}
+
+.registro-negocio {
+    margin: 5px 0;
+
+}
+
+.recuperar-password-negocio {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.recuperar-password-negocio:hover,.registro-negocio:hover {
+    color: #004AAD;
+    cursor: pointer;
+}

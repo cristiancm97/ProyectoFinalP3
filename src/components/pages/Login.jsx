@@ -3,6 +3,17 @@ import '../pages/Login.css'
 import Logo from '../Logo/Logo'
 
 function Login() {
+
+    const handleRecuperarPassword = () => {
+        window.location.href = '/recuperar-password'; // Reemplaza con la URL de tu página de recuperación de contraseña
+      };
+    
+      const handleRegistroClub = () => {
+        window.location.href = '/registro-club'; // Reemplaza con la URL de tu página de registro
+      };
+
+      const mensaje = () => {alert("iniciaste sesion")}
+
   return (
     <div>
         <div id='contenedor-login'>
@@ -19,9 +30,9 @@ function Login() {
                     <div className="contenedor-img-login" id='img-negocio'></div>                    
                     <h2 className='titulo-login'>Quiero gestionar mi club</h2>
                     <div className="formulario-negocio">
-                        <input type='text' placeholder='   Usuario' className='input-usuario'/>
-                        <input type='password' placeholder='   Contraseña' className='input-contraseña' />
-                        <button className='btn-iniciar-sesion'>Iniciar Sesión</button>
+                        <input type='text' placeholder='   Usuario' className='input-usuario' id='user-club'/>
+                        <input type='password' placeholder='   Contraseña' className='input-contraseña' id='password-club'/>
+                        <button className='btn-iniciar-sesion' onClick={mensaje}>Iniciar Sesión</button>
                     </div>
                     <p className='recuperar-password-negocio' onClick={handleRecuperarPassword}>¿Has olvidado tu contraseña?</p>
                     <p className='registro-negocio' onClick={handleRegistroClub}>¿Eres nuevo? Resgistrate aquí</p>

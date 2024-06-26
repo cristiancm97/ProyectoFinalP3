@@ -70,6 +70,19 @@ app.get('/registro/clubs/:id', async (req, res) => {
   }
 });
 
+app.delete('/registro/clubs/:id', async (req, res) => {
+  const id = req.params.id;
+  try {
+      const deletedClub = await Club.findByIdAndDelete(id);
+      if (!deletedClub) {
+          return res.status(404).json({ message: 'Club no encontrado' });
+      }
+      res.json({ message: 'Club eliminado correctamente' });
+  } catch (error) {
+      res.status(500).json({ message: error.message });
+  }
+});
+
 app.listen(5000,() => {
     console.log("El servidor esta en el puerto 5000")
 })

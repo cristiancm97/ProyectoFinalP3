@@ -12,7 +12,18 @@ function Login() {
         window.location.href = '/registro-club'; // Reemplaza con la URL de tu página de registro
       };
 
-      const mensaje = () => {alert("iniciaste sesion")}
+      const mensaje = () => {
+        const usuario = document.getElementById('user-club').value;
+        const password = document.getElementById('password-club').value;
+
+        // Verificar usuario y contraseña
+        if (usuario === 'admin' && password === '1234') {
+            // Redireccionar al link deseado
+            window.location.href = '/admin'; // Reemplaza con la URL a donde quieras redireccionar
+        } else {
+            alert("Usuario o contraseña incorrectos");
+        }
+    };
 
   return (
     <div>

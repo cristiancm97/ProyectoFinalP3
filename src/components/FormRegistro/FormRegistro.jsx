@@ -25,7 +25,7 @@ function FormRegistro() {
       setIsSubmitDisabled(!isFormValid);
     }, [nombreClub, nombreTitular, nroTitular, edad, nroClub, localidad, direccion, correo, imagenPerfil, usuario, password]);
   
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
       e.preventDefault();
       
       const club = {
@@ -36,14 +36,28 @@ function FormRegistro() {
         nroClub,
         localidad,
         direccion,
-        imagenPerfil,
         correo,
         usuario,
         password,
       };
+    
+      // Convertir el objeto club a JSON
+      const clubJson = JSON.stringify(club);
       
-      console.log('Datos del club:', club);
-
+      try {
+        const responseBackend = await fetch('http://localhost:3001/registro/nuevoclub', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: clubJson
+        });
+    
+        if (!responseBackend.ok) {
+          throw new Error('Error al enviar los datos');
+        }
+    
+        // Restablecer los estados a sus valores iniciales
         setNombreClub('');
         setNombreTitular('');
         setNroTitular('');
@@ -55,15 +69,21 @@ function FormRegistro() {
         setUsuario('');
         setPassword('');
         setLocalidad('San Miguel de Tucumán'); // Reinicia el valor de localidad
-
-        // Muestra el modal
+    
+        // Mostrar el modal
         setModalVisible(true);
-
-        // Oculta el modal después de 1 segundo
+    
+        // Ocultar el modal después de 1 segundo
         setTimeout(() => {
-        setModalVisible(false);
-        }, 1000);
+          setModalVisible(false);
+        }, 10000);
+    
+      } catch (error) {
+        console.error('Error al enviar los datos:', error.message);
+        // Manejar el error aquí, por ejemplo, mostrar un mensaje de error al usuario
+      }
     };
+    
     
 
   return (

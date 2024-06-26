@@ -1,4 +1,3 @@
-const { SignalCellularAlt } = require("@mui/icons-material");
 const mongoose = require("mongoose");
 
 const clubSchema = mongoose.Schema({
@@ -59,8 +58,13 @@ const clubSchema = mongoose.Schema({
     type: String,
     required: true
 
+  },
+  date: {
+    type: Date,
+    default: Date.now        
   }
 
 });
 
-module.exports = mongoose.model('Club', clubSchema);
+const Club = mongoose.model('Club', clubSchema);
+module.exports = Club;

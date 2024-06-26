@@ -1,6 +1,4 @@
-const { SignalCellularAlt } = require("@mui/icons-material");
 const mongoose = require("mongoose");
-
 const userSchema = mongoose.Schema({
   nombre: {
     type: String,
@@ -17,4 +15,5 @@ const userSchema = mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema);
+module.exports = User;

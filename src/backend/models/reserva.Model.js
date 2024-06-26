@@ -1,7 +1,6 @@
-const { SignalCellularAlt } = require("@mui/icons-material");
 const mongoose = require("mongoose");
 
-const userSchema = mongoose.Schema({
+const reservaSchema = mongoose.Schema({
   correo: {
     type: String,
     required: true
@@ -12,4 +11,5 @@ const userSchema = mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('User', userSchema);
+const Reserva = mongoose.model('Reserva', reservaSchema);
+module.exports = Reserva 

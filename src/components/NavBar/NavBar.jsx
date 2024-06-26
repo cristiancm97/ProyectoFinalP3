@@ -18,7 +18,7 @@ function NavBar() {
         <div className="grid-item2"></div>
         <div className="grid-item3"></div>
         <div className="grid-item4">
-            <button className='btn-iniciarSesion' onClick={() => navigate("/login")}>Iniciar Sesión</button>
+            <button className='btn-iniciarSesion' id='btn-navbar' onClick={() => navigate("/login")}>Iniciar Sesión</button>
         </div>
       </div>
     </div>

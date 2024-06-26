@@ -35,7 +35,7 @@
     color: white;
 }
 
-.btn-iniciarSesion:hover{
+#btn-navbar:hover{
     cursor: pointer;
     background-color: white;
     color: #004AAD;

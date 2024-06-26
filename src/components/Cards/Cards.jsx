@@ -9,17 +9,20 @@ function Cards() {
             <div className="grid-item-card">
                 <Card
                 imagen={'/imagenes/cards/1.jpg'}
-                titulo='El Galpon Padel'/>
+                titulo='El Galpon Padel'
+                id={"1"}/>
             </div>
             <div className="grid-item-card">
                 <Card
                 imagen={'/imagenes/cards/2.jpg'}
-                titulo='Italia Padel Club'/>
+                titulo='Italia Padel Club'
+                id={"2"}/>
             </div>
             <div className="grid-item-card">
                 <Card
                 imagen={'/imagenes/cards/3.jpg'}
-                titulo="El Fronton Padel"/>
+                titulo="El Fronton Padel"
+                id={"3"}/>
             </div>
         </div>
     

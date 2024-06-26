@@ -17,7 +17,7 @@ function App() {
           <Route path="/recuperar-password" element={<RecPassword/>}/>
           <Route path="/registro-club" element={<RegistroClub/>}/>
           <Route path="/canchas" element={<Canchas/>}/>
-          <Route path="/canchas/1" element={<Club/>}/>
+          <Route path="/canchas/:id" element={<Club />} />
         </Routes>
       </BrowserRouter>
     </div>

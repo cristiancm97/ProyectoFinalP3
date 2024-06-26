@@ -3,88 +3,90 @@ import './FormRegistro.css';
 import Modal from '../Modal/Modal';
 
 function FormRegistro() {
-    const [nombreClub, setNombreClub] = useState('');
-    const [nombreTitular, setNombreTitular] = useState('');
-    const [nroTitular, setNroTitular] = useState('');
-    const [edad, setEdad] = useState('');
-    const [nroClub, setNroClub] = useState('');
-    const [localidad, setLocalidad] = useState('San Miguel de Tucumán');
-    const [direccion, setDireccion] = useState('');
-    const [imagenPerfil, setImagenPerfil] = useState(null);
-    const [correo, setCorreo] = useState('');
-    const [usuario, setUsuario] = useState('');
-    const [password, setPassword] = useState('');
-    const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
-    const [modalVisible, setModalVisible] = useState(false);
-    
+  const [nombreClub, setNombreClub] = useState('');
+  const [nombreTitular, setNombreTitular] = useState('');
+  const [nroTitular, setNroTitular] = useState('');
+  const [edad, setEdad] = useState('');
+  const [nroClub, setNroClub] = useState('');
+  const [localidad, setLocalidad] = useState('San Miguel de Tucumán');
+  const [direccion, setDireccion] = useState('');
+  const [imagenPerfil, setImagenPerfil] = useState(null);
+  const [correo, setCorreo] = useState('');
+  const [usuario, setUsuario] = useState('');
+  const [password, setPassword] = useState('');
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [mensaje, setMensaje] = useState('');
+
+  useEffect(() => {
+    // Habilitar el botón de envío solo si todos los campos están completos
+    const isFormValid =
+      nombreClub && nombreTitular && nroTitular && edad && nroClub && localidad && direccion && correo && imagenPerfil && usuario && password;
+    setIsSubmitDisabled(!isFormValid);
+  }, [nombreClub, nombreTitular, nroTitular, edad, nroClub, localidad, direccion, correo, imagenPerfil, usuario, password]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
   
-    useEffect(() => {
-      // Habilitar el botón de envío solo si todos los campos están completos
-      const isFormValid =
-        nombreClub && nombreTitular && nroTitular && edad && nroClub && localidad && direccion && correo && imagenPerfil && usuario && password;
-      setIsSubmitDisabled(!isFormValid);
-    }, [nombreClub, nombreTitular, nroTitular, edad, nroClub, localidad, direccion, correo, imagenPerfil, usuario, password]);
-  
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      
-      const club = {
-        nombreClub,
-        nombreTitular,
-        nroTitular,
-        edad,
-        nroClub,
-        localidad,
-        direccion,
-        correo,
-        usuario,
-        password,
-      };
-    
-      // Convertir el objeto club a JSON
-      const clubJson = JSON.stringify(club);
-      
-      try {
-        const responseBackend = await fetch('http://localhost:3001/registro/nuevoclub', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: clubJson
-        });
-    
-        if (!responseBackend.ok) {
-          throw new Error('Error al enviar los datos');
-        }
-    
-        // Restablecer los estados a sus valores iniciales
-        setNombreClub('');
-        setNombreTitular('');
-        setNroTitular('');
-        setEdad('');
-        setNroClub('');
-        setDireccion('');
-        setImagenPerfil(null);
-        setCorreo('');
-        setUsuario('');
-        setPassword('');
-        setLocalidad('San Miguel de Tucumán'); // Reinicia el valor de localidad
-    
-        // Mostrar el modal
-        setModalVisible(true);
-    
-        // Ocultar el modal después de 1 segundo
-        setTimeout(() => {
-          setModalVisible(false);
-        }, 10000);
-    
-      } catch (error) {
-        console.error('Error al enviar los datos:', error.message);
-        // Manejar el error aquí, por ejemplo, mostrar un mensaje de error al usuario
-      }
+    const club = {
+      nombreClub: nombreClub,
+      nombreTitular: nombreTitular,
+      nroTitular: nroTitular,
+      edad: edad,
+      nroClub: nroClub,
+      localidad: localidad,
+      direccion: direccion,
+      correo: correo,
+      usuario: usuario,
+      password: password,
     };
     
-    
+    console.log(club)
+    try {
+      // Envía el objeto club como JSON al backend
+      const response = await fetch('http://localhost:5000/registro/nuevoclub', {
+        method: 'POST',
+        body: JSON.stringify(club),
+      });
+  
+      if (response.ok) {
+        // Si la solicitud fue exitosa, muestra el mensaje y el modal
+        setMensaje('Formulario enviado correctamente');
+        setModalVisible(true);
+      } else {
+        // Si hubo algún problema en la solicitud, lanza un error
+        throw new Error('Error en la solicitud');
+      }
+    } catch (error) {
+      // Captura y maneja cualquier error ocurrido durante la solicitud
+      console.error('Error al enviar el formulario:', error);
+      setMensaje('Error al enviar el formulario');
+      setModalVisible(true);
+    }
+  
+    // Limpia los campos del formulario después de enviarlo
+    setNombreClub('');
+    setNombreTitular('');
+    setNroTitular('');
+    setEdad('');
+    setNroClub('');
+    setDireccion('');
+    setImagenPerfil(null);
+    setCorreo('');
+    setUsuario('');
+    setPassword('');
+    setLocalidad('San Miguel de Tucumán'); // Reinicia el valor de localidad
+  
+    // Mostrar el modal
+    setModalVisible(true);
+
+    // Oculta el modal después de 1 segundo y limpia el mensaje
+    setTimeout(() => {
+      setModalVisible(false);
+      setMensaje('');
+    }, 1000);
+  };
+  
 
   return (
     <div className="form-container">
@@ -123,7 +125,7 @@ function FormRegistro() {
           <input type="text" value={direccion} onChange={(e) => setDireccion(e.target.value)} required />
         </div>
         <div className="form-group">
-          <label>Imagen de perfil del club: </label>
+          <label>Imagen de perfil del club:</label>
           <input type="file" onChange={(e) => setImagenPerfil(e.target.files[0])} required />
         </div>
         <div className="form-group">
@@ -144,15 +146,14 @@ function FormRegistro() {
       </form>
 
       {/* Renderiza el modal si modalVisible es true */}
-      {modalVisible && 
-        <Modal 
-            tituloMsj="Formulario enviado"
-            cuerpoMsj="Tu formulario ha sido enviado correctamente, en breves nos contactaremos con usted. Muchas gracias"
-            />}
-
+      {modalVisible && (
+        <Modal
+          tituloMsj="Formulario enviado"
+          cuerpoMsj={mensaje}
+        />
+      )}
     </div>
   );
 }
 
 export default FormRegistro;
-

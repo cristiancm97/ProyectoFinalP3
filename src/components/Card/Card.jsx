@@ -2,7 +2,7 @@ import React from 'react'
 import './Card.css'
 import { useNavigate } from 'react-router-dom'
 
-function Card({ imagen, titulo, id }) {
+function Card({ imagen, titulo, id,direccion,localidad }) {
   
   const navigate = useNavigate();
 
@@ -13,8 +13,8 @@ function Card({ imagen, titulo, id }) {
         <div className="card-contenido">
           <h2 className="card-titulo">{titulo}</h2>
           <div className='card-descripcion'>
-            <p className="card-localidad">Localidad: </p>
-            <p className="card-direccion">Ubicacion: </p>
+            <p className="card-direccion">Dirección: {direccion}</p>
+            <p className="card-localidad">Localidad: {localidad} </p>          
           </div>
           <button className='btn-club' onClick={() => navigate(`/canchas/${id}`)}>Ver más</button>
         </div>

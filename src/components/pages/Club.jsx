@@ -1,16 +1,16 @@
 import React from 'react'
 import NavBar from '../NavBar/NavBar'
 import Footer from '../Footer/Footer'
-import Cards from '../Cards/Cards'
+import InfoClub from '../InfoClub/InfoClub'
 
-function Canchas() {
+function Club() {
   return (
     <div>
         <NavBar/>
-        <Cards/>
+        <InfoClub/>
         <Footer/>
     </div>
   )
 }
 
-export default Canchas
+export default Club

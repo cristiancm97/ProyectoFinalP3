@@ -11,6 +11,7 @@ const clubSchema = mongoose.Schema({
   correo: String,
   usuario: String,
   password: String,
+  canchas: Number,
   date: {
     type: Date,
     default: Date.now        

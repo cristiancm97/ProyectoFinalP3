@@ -1,13 +1,16 @@
 import React from 'react'
 import './Card.css'
 import { useNavigate } from 'react-router-dom'
+import InfoClub from '../InfoClub/InfoClub';
 
 function Card({ imagen, titulo, id,direccion,localidad }) {
   
   const navigate = useNavigate();
 
+  <InfoClub direccion={direccion} localidad={localidad}/>
+  
   return (
-    <div id='contenedor-card'>
+    
       <div className="card">
         <img src={imagen} alt={titulo} className="card-img" />
         <div className="card-contenido">
@@ -19,8 +22,9 @@ function Card({ imagen, titulo, id,direccion,localidad }) {
           <button className='btn-club' onClick={() => navigate(`/canchas/${id}`)}>Ver más</button>
         </div>
       </div>
-    </div>
   );
 }
+
+
 
 export default Card

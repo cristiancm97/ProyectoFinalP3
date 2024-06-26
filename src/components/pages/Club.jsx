@@ -5,18 +5,20 @@ import InfoClub from '../InfoClub/InfoClub'
 import "./Club.css"
 import TablaCancha from '../TablaCanchas/TablaCachas'
 
-function Club() {
+function Club({nombreClub,direccion,telefono}) {
   return (
     <div>
         <NavBar/>
         <h1 className="nombre-club">
-          Italia Padel
+          {nombreClub}
         </h1>
        <div>
           <h1>Elegi tu turno</h1>
           <TablaCancha/>
         </div>
-        <InfoClub/>
+        <InfoClub
+        direccion={direccion}
+        telefono={telefono}/>
         <Footer/>
     </div>
   )

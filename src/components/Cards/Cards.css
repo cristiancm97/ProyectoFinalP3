@@ -4,6 +4,8 @@
     border: 4px solid white;
     display: grid;
     grid-template-columns: repeat(3,1fr);
+    column-gap: 200px;
+    justify-items: center;
 }
 
 .grid-item-card {

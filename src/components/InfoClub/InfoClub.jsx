@@ -1,7 +1,7 @@
 import React from 'react'
 import'./InfoClub.css'
 
-function InfoClub() {
+function InfoClub({direccion,telefono}) {
   return (
     <div className='contenedor-infoclub'>
         <div className="columna-infoclub1">
@@ -26,11 +26,11 @@ function InfoClub() {
             <div className="info-club">
                 <div className="grupo-info">
                     <h3 className="titulo-info-club">Dirección:</h3>
-                    <p className="descripcion-info-club">Rivadavia 1050</p>
+                    <p className="descripcion-info-club">{direccion}</p>
                 </div>
                 <div className="grupo-info">
                     <h3 className="titulo-info-club">Telefono:</h3>
-                    <p className="descripcion-info-club">3814653130</p>
+                    <p className="descripcion-info-club">{telefono}</p>
                 </div> 
                 <div className="grupo-info">
                     <h3 className="titulo-info-club">Horarios del club</h3>

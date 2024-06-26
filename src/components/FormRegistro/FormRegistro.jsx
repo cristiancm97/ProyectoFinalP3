@@ -10,7 +10,7 @@ function FormRegistro() {
   const [nroClub, setNroClub] = useState('');
   const [localidad, setLocalidad] = useState('San Miguel de Tucumán');
   const [direccion, setDireccion] = useState('');
-  const [imagenPerfil, setImagenPerfil] = useState(null);
+  const [canchas, setCanchas] = useState('');
   const [correo, setCorreo] = useState('');
   const [usuario, setUsuario] = useState('');
   const [password, setPassword] = useState('');
@@ -21,9 +21,9 @@ function FormRegistro() {
   useEffect(() => {
     // Habilitar el botón de envío solo si todos los campos están completos
     const isFormValid =
-      nombreClub && nombreTitular && nroTitular && edad && nroClub && localidad && direccion && correo && imagenPerfil && usuario && password;
+      nombreClub && nombreTitular && nroTitular && edad && nroClub && localidad && direccion && correo && canchas && usuario && password;
     setIsSubmitDisabled(!isFormValid);
-  }, [nombreClub, nombreTitular, nroTitular, edad, nroClub, localidad, direccion, correo, imagenPerfil, usuario, password]);
+  }, [nombreClub, nombreTitular, nroTitular, edad, nroClub, localidad, direccion, correo, canchas, usuario, password]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,6 +39,7 @@ function FormRegistro() {
       correo: correo,
       usuario: usuario,
       password: password,
+      canchas:canchas,
     };
     
     console.log(club)
@@ -71,7 +72,7 @@ function FormRegistro() {
     setEdad('');
     setNroClub('');
     setDireccion('');
-    setImagenPerfil(null);
+    setCanchas('');
     setCorreo('');
     setUsuario('');
     setPassword('');
@@ -125,8 +126,8 @@ function FormRegistro() {
           <input type="text" value={direccion} onChange={(e) => setDireccion(e.target.value)} required />
         </div>
         <div className="form-group">
-          <label>Imagen de perfil del club:</label>
-          <input type="file" onChange={(e) => setImagenPerfil(e.target.files[0])} required />
+          <label>Cantidad de canchas:</label>
+          <input type="number" value={canchas} onChange={(e) => setCanchas(e.target.value)} required />
         </div>
         <div className="form-group">
           <label>Correo Electrónico:</label>

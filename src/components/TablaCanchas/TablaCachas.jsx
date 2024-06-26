@@ -95,10 +95,10 @@ const TablaCancha = () => {
                 return (
                   <td key={columnIndex}>
                     <button
-                      className={availability[cellKey] === 'disponible' ? 'green-button' : 'red-button'}
+                      className={availability[cellKey] === 'disponible' ? 'red-button' : 'green-button'}
                       onClick={() => toggleAvailability(rowIndex, columnIndex)}
                     >
-                      {availability[cellKey] === 'disponible' ? 'Disponible' : 'No Disponible'}
+                      {availability[cellKey] === 'disponible' ? 'No Disponible' : 'Disponible'}
                     </button>
                   </td>
                 );

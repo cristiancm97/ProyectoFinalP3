@@ -1,6 +1,7 @@
 import React from 'react'
 import NavBar from '../NavBar/NavBar'
 import BtnFlotanteWp from '../Button/BtnFlotanteWp/BtnFlotanteWp'
+import Footer from '../Footer/Footer'
 
 function RecPassword() {
   return (
@@ -11,6 +12,7 @@ function RecPassword() {
           NroCelular={'3814653130'}
         />
       </div> 
+      <Footer/>
     </div>
   )
 }

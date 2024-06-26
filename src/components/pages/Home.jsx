@@ -5,6 +5,7 @@ import Slider from '../Slider/Slider'
 import Titulo from '../Titulo/Titulo'
 import Cards from '../Cards/Cards'
 import BtnFlotanteWp from '../Button/BtnFlotanteWp/BtnFlotanteWp'
+import Footer from '../Footer/Footer'
 
 function Home() {
   return (
@@ -20,6 +21,7 @@ function Home() {
           NroCelular={'3814653130'}
         />
       </div>  
+      <Footer/>
     </div>
   )
 }

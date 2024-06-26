@@ -2,6 +2,7 @@ import React from 'react'
 import NavBar from '../NavBar/NavBar'
 import BtnFlotanteWp from '../Button/BtnFlotanteWp/BtnFlotanteWp'
 import FormRegistro from '../FormRegistro/FormRegistro'
+import Footer from '../Footer/Footer'
 
 function RegistroClub() {
   return (
@@ -12,7 +13,8 @@ function RegistroClub() {
             <BtnFlotanteWp
           NroCelular={'3814653130'}
         />
-      </div> 
+      </div>
+      <Footer/> 
     </div>
   )
 }
